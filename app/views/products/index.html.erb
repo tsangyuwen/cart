@@ -1,1 +1,19 @@
-index
+<div class="container">
+	<div class="col-md-9 col-sm-9">
+
+		<% @products.each do |product| %>
+
+			<div class="col-md-3 col-sm-3 text-center">
+				<%= image_tag product.image, width:'100px', class: "img-reponsive center-block" %> <br>
+				<%= product.name %> <br>
+				<%= truncate(product.description, length:20) %> <br>
+				$ <%= product.price %>
+				<br>
+				<br>
+				<br>
+			</div>
+			
+		<% end -%>
+
+	</div>
+</div>

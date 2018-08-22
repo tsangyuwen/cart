@@ -8,4 +8,12 @@ Rails.application.routes.draw do
   	post :add_to_cart, on: :member
   end
 
+  resources :orders, only: [:index]
+
+  namespace :admin do
+  	resources :products
+  	resources :order
+  	root "products#index"
+  end
+
 end

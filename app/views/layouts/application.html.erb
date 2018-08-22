@@ -9,6 +9,48 @@
   </head>
 
   <body>
+  	 	<!-- banner -->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="naber-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <%= link_to(root_path, class: "navbar-brand") do %>
+          	<img src="https://image.freepik.com/free-photo/close-up-raindrops-on-white_23-2147828341.jpg" height="25" width="25" />
+          <% end -%>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="pull-right text-right nav navbar-nav">
+          	
+            <li><%= link_to('Cart', cart_path(current_user)) %></li>
+
+            <li><%= link_to('Order', orders_path) %></li>
+
+            <% if current_user %>
+
+          		<% if current_user.admin? %>
+	              <li><%= link_to 'Admin', admin_products_path %></li>
+	            <% end %>
+
+          		<li><%= link_to('log out', destroy_user_session_path, method: :delete) %></li>
+          		
+            <% else %>
+            	<li><%= link_to('log in', new_user_session_path) %></li>
+            <% end -%>
+          
+          	
+          </ul>
+        </div>
+      </div>
+    </nav>
+
     <%= yield %>
   </body>
 </html>
